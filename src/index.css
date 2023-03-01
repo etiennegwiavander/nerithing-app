@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  /* color: #333; */
+}
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  z-index: 10000000;
+
+}
+.logo {
+  color: #f1356d;
+}
+.navbar .links {
+ font-weight: 600;
+  margin-left: auto;
+  padding-right: 50px;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color:black;
+}
+.navbar a:hover {
+  color: #f1356d;
+}
+.content {
+  width: 100%;
+}
+
+/* weather section */
+.weather_content {
+  
+  border: 15px solid #000000d0;
+  max-width: 750px;
+  min-height: 400px;
+  border-radius: 10px;
+  margin: 100px auto;
+  box-shadow: 0 50px 50px -30px #000000fa;
+ 
+}
+
+.weather-location{
+  padding: 10px 20px;
+  min-height: 220px;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.conditions img{
+  width: 120px;
+}
+.conditions {
+  background-color: #ffffff6d;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  min-height: 170px;
+  
+}
+.conditions p {
+  margin-left: 20px;
+  font-family: inherit;
+  font-weight: 500;
+  
+}
