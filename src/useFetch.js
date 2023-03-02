@@ -4,7 +4,8 @@ import { API_key } from "./api";
 
 const useFetch = (url) => {
 
-    const [fetchedData, setFetchedData]= useState(null)
+    const [fetchedData, setFetchedData]= useState(false)
+    const [isLoading, setIsLoading]= useState(true)
 
     useEffect (()=>{
         
@@ -18,12 +19,13 @@ const useFetch = (url) => {
         .then(response => response.json())
         .then(data => {
             setFetchedData(data)
+            setIsLoading(false)
             
         })
         .catch(err => console.error(err))
     }, [url])
 
-    return {fetchedData}
+    return {fetchedData, isLoading}
 }
  
 export default useFetch;

@@ -8,15 +8,15 @@ const WeatherDetails = () => {
             'X-RapidAPI-Key':`${API_key}` ,
         }
     };
-    const {fetchedData: infos} = useFetch('https://weatherapi-com.p.rapidapi.com/current.json?q=Bamenda', options)
+    const {fetchedData: infos, isLoading} = useFetch('https://weatherapi-com.p.rapidapi.com/current.json?q=Bamenda', options)
     console.log(infos)
     return ( 
         <div className={weathercss.weatherDetails}>
             
-           
+                { isLoading && <div className='weathe-loader'> Loading ... </div>}
                 {infos &&  
                 <div className= "weather_content">
-
+                    
                     <div className="weather-location">
                         {/* <h2>Weather infomation</h2> */}
                         <div className="location-time">
