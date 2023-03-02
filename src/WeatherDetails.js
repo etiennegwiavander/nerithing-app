@@ -8,24 +8,30 @@ const WeatherDetails = () => {
             'X-RapidAPI-Key':`${API_key}` ,
         }
     };
-    const {fetchedData: infos, isLoading} = useFetch('https://weatherapi-com.p.rapidapi.com/current.json?q=Bamenda', options)
+    const {fetchedData: infos, isLoading, error} = useFetch('https://weatherapi-com.p.rapidapi.com/current.json?q=Bamenda', options)
     console.log(infos)
     return ( 
         <div className={weathercss.weatherDetails}>
-            
-                { isLoading && <div className='weathe-loader'> Loading ... </div>}
+
+                <form className='weather-input'>
+                    <input type="text" placeholder='type city name'/>
+                    <button>Search</button>
+                </form>
+
+                { isLoading && <h1 className='weather-loader'> Loading ... </h1>}
+                { error && <h3 className='weather-error'> {error}</h3> }
                 {infos &&  
                 <div className= "weather_content">
                     
                     <div className="weather-location">
-                        {/* <h2>Weather infomation</h2> */}
+
                         <div className="location-time">
                             <p>Local time: { infos.location.localtime }</p>
                             <p>Last Updated: { infos.current.last_updated }</p>  
                         </div>
                         
                         <div className="location-date">
-                            <p>{ infos.location.name }</p>
+                            <p className='weather-city'>{ infos.location.name }</p>
                             <p>{ infos.location.region }, { infos.location.country }</p>                          
                         </div>
 
@@ -38,11 +44,13 @@ const WeatherDetails = () => {
                         </div>
 
                         <p>{ infos.current.temp_c } °C</p>
-                        <p>Feels like: { infos.current.feelslike_c } °C</p>
+                        <p>Feels like: { infos.current.feelslike_c } °C/{ infos.current.feelslike_f } °F</p>
+                        <p>Humidity: { infos.current.pressure_in } in/ { infos.current.pressure_mb }</p>
+                        <p>Precipitaion: { infos.current.humidity } °C</p>
                         
                     </div>        
 
-                
+                    
                 
                 </div>}                
             

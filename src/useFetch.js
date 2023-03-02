@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState  } from "react";
 import { API_key } from "./api";
 
 const useFetch = (url) => {
 
     const [fetchedData, setFetchedData]= useState(false)
     const [isLoading, setIsLoading]= useState(true)
+    const [error, setError]= useState(null)
 
     useEffect (()=>{
         
@@ -16,16 +16,30 @@ const useFetch = (url) => {
         };
 
         fetch(url, options)
-        .then(response => response.json())
+        .then(response => {
+            if(!response.ok){
+                throw Error("Could not fetch the data")
+              }
+            return response.json()})
         .then(data => {
             setFetchedData(data)
             setIsLoading(false)
             
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+            if(err.name === "AbortError"){
+              
+            }else{
+            setError(err.message)
+            setIsLoading(false)
+            setFetchedData(null)  
+            setFetchedData(false)        
+            }
+    
+          })
     }, [url])
 
-    return {fetchedData, isLoading}
+    return {fetchedData, isLoading, error}
 }
  
 export default useFetch;
