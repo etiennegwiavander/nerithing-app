@@ -14,9 +14,10 @@ const useFetch = (url) => {
                 'X-RapidAPI-Key':`${API_key}` ,
             }
         };
-
+        
         fetch(url, options)
         .then(response => {
+            console.log(response)
             if(!response.ok){
                 throw Error("Could not fetch the data")
               }
@@ -37,6 +38,7 @@ const useFetch = (url) => {
             }
     
           })
+    
     }, [url])
 
     return {fetchedData, isLoading, error}

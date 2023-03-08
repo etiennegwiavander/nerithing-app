@@ -105,7 +105,7 @@ form.weather-input{
   overflow: hidden;
 }
 
-.weather-input input{
+form.weather-input input{
   width: 700px;
   padding: 6px;
   outline: none;
