@@ -1,77 +1,128 @@
 import weathercss from './weather.module.css'
 import { API_key } from "./api";
-import useFetch from "./useFetch";
-import { useState } from 'react';
+// import useFetch from "./useFetch";
+import { useState, useEffect } from 'react';
+
+
+
 
 const WeatherDetails = () => {
 
-    const [city, setCity] = useState(" ")
+    const [city, setCity] = useState("Bamenda")
+    const [fetchedData, setFetchedData]= useState(false)
+    const [isLoading, setIsLoading]= useState(true)
+    const [error, setError]= useState(null)
+
+    
+    let URL = `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}`
 
     const options = {
         headers: {
             'X-RapidAPI-Key':`${API_key}` ,
         }
     };
-    const {fetchedData: infos, isLoading, error} = useFetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${city}`, options)
-    console.log(infos)
+    
+    const handleSubmit = (event) => { 
+        event.preventDefault();
 
-    const handleSubmit = (e) => {
-    e.preventDefault()
-    infos = {infos, isLoading, error}
+        fetch(URL, options)
+        .then(response => {
+            console.log(response)
 
-    }
+            return response.json()})
+        .then(data => {
+            setCity(city)
+
+        })
+    }  
+    
+    // to only alow the input update the state of the app when the user is done typing
+    useEffect (()=>{
+        
+
+        
+        fetch(URL, options)
+        .then(response => {
+            console.log(response)
+            if(!response.ok){
+                throw Error("Could not fetch the data")
+              }
+            return response.json()})
+        .then(data => {
+            setFetchedData(data)
+            setIsLoading(false)
+            setError(null)
+        })
+        .catch(err => {
+            if(err.name === "AbortError"){
+              
+            }else{
+            setError(err.message)
+            setIsLoading(false)
+            setFetchedData(null)  
+            setFetchedData(false)        
+            }
+    
+          })
+    
+    }, [URL])
+
+    // let {fetchedData: infos, isLoading, error} = useFetch(URL, options)
+
     return ( 
         <div className={weathercss.weatherDetails}>
 
-                <form className='weather-input' onSubmit={handleSubmit}>
-                    <input type="text" placeholder='type city name'
+           <form className='weather-input' onSubmit={handleSubmit}>
+                <input type="text"  
                     required
                     value={ city }
                     onChange = {(e)=> setCity(e.target.value)}
-                    />
-                    <button>Search</button>
-                </form>
-
-                { isLoading && <h1 className='weather-loader'> Loading ... </h1>}
-                { error && <h3 className='weather-error'> {error}</h3> }
-                {infos &&  
-                <div className= "weather_content">
+                    placeholder='type city name'
                     
-                    <div className="weather-location">
+                />
+                <button >Search</button>
+            </form>
 
-                        <div className="location-time">
-                            <p>Local time: { infos.location.localtime }</p>
-                            <p>Last Updated: { infos.current.last_updated }</p>  
-                        </div>
-                        
-                        <div className="location-date">
-                            <p className='weather-city'>{ infos.location.name }</p>
-                            <p>{ infos.location.region }, { infos.location.country }</p>                          
-                        </div>
-
-                    </div>
-                    <div className='weather-temperature'> 
-                        <h1>🌡</h1>
-                        <p >{ infos.current.temp_c } °C/ { infos.current.temp_f } °F</p>
-                    </div>
-                        
-                    <div className="conditions">
-                        <div className="conditions-icon">
-                            <img className='weather-icon' src={ infos.current.condition.icon }/>
-                            <p>{ infos.current.condition.text }</p>                            
-                        </div>
-
-                        
-                        <p>Feels like: { infos.current.feelslike_c } °C/{ infos.current.feelslike_f } °F</p>
-                        <p>Humidity: { infos.current.pressure_in } in/ { infos.current.pressure_mb } mb</p>
-                        <p>Precipitaion: { infos.current.precip_mm } mm</p>
-                        
-                    </div>        
-
-                    
+            { isLoading && <h1 className='weather-loader'> Loading ... </h1>}
+            { error && <h3 className='weather-error'> {error}</h3> }
+            {fetchedData &&  
+            <div className= "weather_content">
                 
-                </div>}                
+                <div className="weather-location">
+
+                    <div className="location-time">
+                        <p>Local time: { fetchedData.location.localtime }</p>
+                        <p>Last Updated: { fetchedData.current.last_updated }</p>  
+                    </div>
+                    
+                    <div className="location-date">
+                        <p className='weather-city'>{ fetchedData.location.name }</p>
+                        <p>{ fetchedData.location.region }, { fetchedData.location.country }</p>                          
+                    </div>
+
+                </div>
+                <div className='weather-temperature'> 
+                    <h1>🌡</h1>
+                    <p >{ fetchedData.current.temp_c } °C/ { fetchedData.current.temp_f } °F</p>
+                </div>
+                    
+                <div className="conditions">
+                    <div className="conditions-icon">
+                        <img className='weather-icon' src={ fetchedData.current.condition.icon }/>
+                        <p>{ fetchedData.current.condition.text }</p>                            
+                    </div>
+
+                    
+                    <p>Feels like: { fetchedData.current.feelslike_c } °C/{ fetchedData.current.feelslike_f } °F</p>
+                    <p>Humidity: { fetchedData.current.pressure_in } in/ { fetchedData.current.pressure_mb } mb</p>
+                    <p>Precipitaion: { fetchedData.current.precip_mm } mm</p>
+                    
+                </div>        
+
+                
             
+            </div>}                
+        
 
         </div>
      );
