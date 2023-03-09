@@ -7,38 +7,41 @@ const useFetch = (url) => {
     const [isLoading, setIsLoading]= useState(true)
     const [error, setError]= useState(null)
 
+    const options = {
+        headers: {
+            'X-RapidAPI-Key':`${API_key}` ,
+        }
+    };
+
     useEffect (()=>{
+  
+        const getData = setTimeout(() => {
+            fetch(url, options)
+            .then(response => {
+                console.log(response)
+                if(!response.ok){
+                    throw Error("Could not fetch the data")
+                }
+                return response.json()})
+            .then(data => {
+                setFetchedData(data)
+                setIsLoading(false)
+                setError(null)
+            })
+            .catch(err => {
+                if(err.name === "AbortError"){
+                
+                }else{
+                setError(err.message)
+                setIsLoading(false)
+                setFetchedData(null)  
+                setFetchedData(false)        
+                }
         
-        const options = {
-            headers: {
-                'X-RapidAPI-Key':`${API_key}` ,
-            }
-        };
+            })
+        }, 1500)
         
-        fetch(url, options)
-        .then(response => {
-            console.log(response)
-            if(!response.ok){
-                throw Error("Could not fetch the data")
-              }
-            return response.json()})
-        .then(data => {
-            setFetchedData(data)
-            setIsLoading(false)
-            setError(null)
-        })
-        .catch(err => {
-            if(err.name === "AbortError"){
-              
-            }else{
-            setError(err.message)
-            setIsLoading(false)
-            setFetchedData(null)  
-            setFetchedData(false)        
-            }
-    
-          })
-    
+        return () => clearTimeout(getData)
     }, [url])
 
     return {fetchedData, isLoading, error}

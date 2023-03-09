@@ -2,6 +2,7 @@ import Homepage from "./Homepage";
 import Navbar from "./Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WeatherDetails from "./WeatherDetails";
+import WeatherForecast from "./WeatherForecast";
 
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
             </Route>
             <Route  path="/weather">
               <WeatherDetails/>
+            </Route>
+            <Route  path="/weather/weatherforecast">
+              <WeatherForecast/>
             </Route>
           </Switch>
         </div>
