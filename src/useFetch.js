@@ -18,12 +18,13 @@ const useFetch = (url) => {
         const getData = setTimeout(() => {
             fetch(url, options)
             .then(response => {
-                console.log(response)
+                
                 if(!response.ok){
                     throw Error("Could not fetch the data")
                 }
                 return response.json()})
             .then(data => {
+                console.log(data)
                 setFetchedData(data)
                 setIsLoading(false)
                 setError(null)

@@ -9,6 +9,7 @@ import WeatherForcast from './WeatherForecast';
 const WeatherDetails = () => {
 
     const [city, setCity] = useState("Bamenda")
+    const [showForecast, setShowForecast] = useState(true);
 
     let URL = `${BASE_URL}/current.json?q=${city}`
 
@@ -36,52 +37,55 @@ const WeatherDetails = () => {
                     placeholder='type city name'
                     
                 />
-                <button >Search</button>
             </form>
+            
+                { isLoading && <h1 className='weather-loader'> Loading ... </h1>}
+                { error && <h3 className='weather-error'> {error}</h3> }
+                {fetchedData &&  
+                <div className= "weather_content">
+                    {showForecast && <div>
+                        <div className="weather-location">
 
-            { isLoading && <h1 className='weather-loader'> Loading ... </h1>}
-            { error && <h3 className='weather-error'> {error}</h3> }
-            {fetchedData &&  
-            <div className= "weather_content">
-                
-                <div className="weather-location">
+                            <div className="location-time">
+                                <p>Local time: { fetchedData.location.localtime }</p>
+                                <p>Last Updated: { fetchedData.current.last_updated }</p>  
+                            </div>
+                            
+                            <div className="location-date">
+                                <p className='weather-city'>{ fetchedData.location.name }</p>
+                                <p>{ fetchedData.location.region }, { fetchedData.location.country }</p>                          
+                            </div>
 
-                    <div className="location-time">
-                        <p>Local time: { fetchedData.location.localtime }</p>
-                        <p>Last Updated: { fetchedData.current.last_updated }</p>  
-                    </div>
-                    
-                    <div className="location-date">
-                        <p className='weather-city'>{ fetchedData.location.name }</p>
-                        <p>{ fetchedData.location.region }, { fetchedData.location.country }</p>                          
-                    </div>
+                        </div>
+                        <div className='weather-temperature'> 
+                            <h1>🌡</h1>
+                            <p >{ fetchedData.current.temp_c } °C/ { fetchedData.current.temp_f } °F</p>
+                        </div>
+                            
+                        <div className="conditions" onClick={() => {
+                            history.push('/weather/weatherforecast')
+                            setShowForecast(!showForecast)}}>
+                        
+                            <div className="conditions-icon">
+                                <img className='weather-icon' src={ fetchedData.current.condition.icon }/>
+                                <p>{ fetchedData.current.condition.text }</p>                            
+                            </div>
 
-                </div>
-                <div className='weather-temperature'> 
-                    <h1>🌡</h1>
-                    <p >{ fetchedData.current.temp_c } °C/ { fetchedData.current.temp_f } °F</p>
-                </div>
-                    
-                <div className="conditions" onClick={() => history.push('/weather/weatherforecast')}>
-                    <div className="conditions-icon">
-                        <img className='weather-icon' src={ fetchedData.current.condition.icon }/>
-                        <p>{ fetchedData.current.condition.text }</p>                            
-                    </div>
+                            
+                            <p>Feels like: { fetchedData.current.feelslike_c } °C/{ fetchedData.current.feelslike_f } °F</p>
+                            <p>Humidity: { fetchedData.current.pressure_in } in/ { fetchedData.current.pressure_mb } mb</p>
+                            <p>Precipitaion: { fetchedData.current.precip_mm } mm</p>
+                            
+                        </div>
 
-                    
-                    <p>Feels like: { fetchedData.current.feelslike_c } °C/{ fetchedData.current.feelslike_f } °F</p>
-                    <p>Humidity: { fetchedData.current.pressure_in } in/ { fetchedData.current.pressure_mb } mb</p>
-                    <p>Precipitaion: { fetchedData.current.precip_mm } mm</p>
-                    
-                </div>        
-  
-            </div>}                
-                <div>
-                    <WeatherForcast/>
-                </div>
+
+
+                    </div> }        
+                    {!showForecast && <div> <WeatherForcast/> </div>}
+                </div>}  
 
         </div>
-     );
+    );
 }
  
 export default WeatherDetails;

@@ -1,0 +1,28 @@
+.forecast{
+    display: flex;
+    justify-content: space-between;
+}
+.current{
+    border-right: 1px solid black;
+    text-align: center;
+    padding-right: 150px;
+}
+.nextTwoDays{
+    padding: 10px;
+    /* border-left: 1px solid black; */
+    text-align: right;
+}
+
+.hourlyForecast{
+    border-top: 1px solid black;
+}
+.hours{
+    display: flex;
+    padding-left: 0;
+}
+
+.hours li{
+    padding: 8px 12px;
+    border-left: 1px solid black;
+    list-style: none;
+}
