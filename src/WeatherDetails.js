@@ -2,11 +2,8 @@ import weathercss from './weather.module.css'
 import { API_key, BASE_URL } from "./api";
 import useFetch from "./useFetch";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import WeatherForcast from './WeatherForecast';
-
-
 
 
 const WeatherDetails = () => {
@@ -77,9 +74,11 @@ const WeatherDetails = () => {
                     <p>Precipitaion: { fetchedData.current.precip_mm } mm</p>
                     
                 </div>        
-
+  
             </div>}                
-        
+                <div>
+                    <WeatherForcast/>
+                </div>
 
         </div>
      );

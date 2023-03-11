@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     background-image:
-    linear-gradient(45deg,hsla(0, 0%, 0%, 0.298),
+    linear-gradient(45deg,#0000004c,
       #05050533),
       url('./images/peakpx.jpg');
     width: 100%;
