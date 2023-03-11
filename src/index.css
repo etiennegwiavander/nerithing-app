@@ -4,7 +4,15 @@
 * {
   margin: 0;
   font-family: "Quicksand";
+  
   /* color: #333; */
+}
+.Homepage{
+  background-color:#333;
+  background-size: cover;
+  background-repeat: no-repeat; 
+  width: 100%;
+  height: 100vh;
 }
 .navbar {
   padding: 10px;
@@ -68,7 +76,7 @@
   width: 120px;
 }
 .conditions {
-  background-color: #ffffff6d;
+  background-color: #ffffff94;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -134,4 +142,10 @@ form.weather-input input{
 }
 .weather-temperature  p{
   font-weight: bolder;
+}
+
+/* forecast section  */
+
+.weatherFocast {
+  margin: 10px auto;
 }
