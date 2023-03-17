@@ -1,17 +1,45 @@
-.forecast{
+
+.weather_forecast_header{
+    text-align: center;
+    padding-top: 20px;
+}
+.current_weather_forecast{
     display: flex;
     justify-content: space-between;
 }
 
-.forecast-current{
+.current_weather_forecast h3{ 
+    padding: 15px 0 0 150px;
+}
+.current_weather_forecast button{
+    background: transparent;
+    border: none;
+}
+.current_weather_forecast p, button{
+   color: wheat;
+    font-size: 50px;
+    padding: 0;
+
+}
+.forecast{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    
+}
+
+.forecast_current{
     border-right: 1px solid black;
     text-align: center;
-    padding-right: 150px;
+    padding-right: 100px;
+    text-align: center;
 }
-.forecast-nextTwoDays{
-    padding: 10px;
-    /* border-left: 1px solid black; */
-    text-align: right;
+.forecast-current small{
+    padding: 30px;
+}
+.forecast-nextTwoDays p {
+    font-weight: bold;
+    
 }
 
 .forecast-hourlyForecast{
@@ -27,4 +55,16 @@
     padding: 8px 12px;
     border-left: 1px solid black;
     list-style: none;
+}
+
+.forecast-day2, .forecast-day3{
+    border-top: 2px  solid white;
+    border-bottom: 2px  solid white;
+    text-align: center;
+    padding:0 10px 0 30px;
+
+}
+
+.tomorrow_hourly_forecast{
+    text-align: center;
 }

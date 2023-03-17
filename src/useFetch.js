@@ -3,7 +3,7 @@ import { API_key } from "./api";
 
 const useFetch = (url) => {
 
-    const [fetchedData, setFetchedData]= useState(false)
+    const [fetchedData, setFetchedData]= useState("")
     const [isLoading, setIsLoading]= useState(true)
     const [error, setError]= useState(null)
 

@@ -27,8 +27,8 @@ const WeatherDetails = () => {
     const history = useHistory();
 
     return ( 
-        <div className={weathercss.weatherDetails}>
-
+        <div className={weathercss.weatherDetails} >
+            
            <form className='weather-input' >
                 <input type="text"  
                     required
@@ -43,7 +43,8 @@ const WeatherDetails = () => {
                 { error && <h3 className='weather-error'> {error}</h3> }
                 {fetchedData &&  
                 <div className= "weather_content">
-                    {showForecast && <div>
+                    {showForecast && <div onLoad ={ () =>history.push('/weather') }>
+                        
                         <div className="weather-location">
 
                             <div className="location-time">
