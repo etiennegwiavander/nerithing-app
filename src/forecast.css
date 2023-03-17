@@ -2,26 +2,28 @@
     display: flex;
     justify-content: space-between;
 }
-.current{
+
+.forecast-current{
     border-right: 1px solid black;
     text-align: center;
     padding-right: 150px;
 }
-.nextTwoDays{
+.forecast-nextTwoDays{
     padding: 10px;
     /* border-left: 1px solid black; */
     text-align: right;
 }
 
-.hourlyForecast{
+.forecast-hourlyForecast{
     border-top: 1px solid black;
 }
-.hours{
+.forecast-hours{
     display: flex;
     padding-left: 0;
+    border-top: 1px solid black;
 }
 
-.hours li{
+.forecast-hours li{
     padding: 8px 12px;
     border-left: 1px solid black;
     list-style: none;
