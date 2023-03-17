@@ -34,7 +34,7 @@
     padding-right: 100px;
     text-align: center;
 }
-.forecast-current small{
+.forecast_current small{
     padding: 30px;
 }
 .forecast-nextTwoDays p {
