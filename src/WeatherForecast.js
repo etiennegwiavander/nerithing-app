@@ -8,9 +8,8 @@ import "./forecast.css"
 const WeatherForecast = () => {
 
     const [city, setCity] = useState("Bamenda")
-    const [showMore, setShowMore] = useState( false)
-    const [showForecast, setShowForecast] = useState(true);
-    
+    // const [showMore, setShowMore] = useState( false)
+    // const [showForecast, setShowForecast] = useState(true);
     
     // const [hourlyForecast, setHourlyForecast] = useState([])
 
@@ -26,97 +25,122 @@ const WeatherForecast = () => {
   
     const pageReload = () => window. location. reload( true )
     
-    // const arrays = forecasts.forecastday[0].hour
-    // const data = arrays?.map((array) => <li> {array} </li>)
     console.log(forecasts)
 
     return ( 
-        
         <div className="weather_forecast" >
-            {isLoading && <h1 className='weather-loader'> Loading ... </h1>}
+            { isLoading && <h1 className='weather-loader'> Loading ... </h1> }
             { error && <h3 className='weather-error'> {error}</h3> }
-            <h3 className="weather_forecast_header">Three Days Weather Forecast</h3>
-
-            {forecasts && <div className="hourly_forecast">
-
+            { forecasts && <h4 className="weather_forecast_header">Three Days Weather Forecast</h4> }
+            
+            {forecasts && <div  className="hourly_forecast">
             <div className="forecast">
                 
                 <div className="forecast_current">
                    <div className="current_weather_forecast"> 
-                        <button title="Back to current weather"
+                        <button  title="Back to current weather"
                             onClick={() =>{
                                 history.push( "/weather" )
                                 pageReload() 
-                                }}> <FaLongArrowAltLeft bounce />
+                                }}> <FaLongArrowAltLeft  />
                                 
                         </button>
                         
                             
-                        <h3>Current info</h3>
+                        <h3>Today's Weather info</h3>
                     </div>
-                    <img src={forecasts.forecast.forecastday[0].day.condition.icon}  />
+                    <img alt=" icon " src={forecasts.forecast.forecastday[0].day.condition.icon}  />
                     <p>{forecasts.forecast.forecastday[0].day.condition.text}</p>
                     <h1>{forecasts.forecast.forecastday[0].day.avgtemp_c} °C</h1>
-                    <small>Sunrise: {forecasts.forecast.forecastday[0].astro.sunrise}</small>
-                    <small>Sunset: {forecasts.forecast.forecastday[0].astro.sunset}</small>
+                    <small>Sunrise: <span> {forecasts.forecast.forecastday[0].astro.sunrise} </span></small>
+                    <small>Sunset: <span> {forecasts.forecast.forecastday[0].astro.sunset} </span></small>
                 </div>
                 <div className="forecast-nextTwoDays">
                     <div className="forecast-day2">
-                        <h3>TOMORROW: { forecasts.forecast.forecastday[1].date } </h3>
-                        <img src={forecasts.forecast.forecastday[1].day.condition.icon}  />
+                        <h5>TOMORROW: { forecasts.forecast.forecastday[1].date } </h5>
+                        <img alt=" icon " src={forecasts.forecast.forecastday[1].day.condition.icon}  />
                         <p>{forecasts.forecast.forecastday[1].day.condition.text}</p>
-                        <h3>{forecasts.forecast.forecastday[1].day.avgtemp_c} °C</h3>
+                        <h5>{forecasts.forecast.forecastday[1].day.avgtemp_c} °C</h5>
                     </div>
                     <div className="forecast-day3">
-                        <h3>OVERMORROW: { forecasts.forecast.forecastday[2].date }</h3>
-                        <img src={forecasts.forecast.forecastday[2].day.condition.icon}  />
+                        <h5>OVERMORROW: { forecasts.forecast.forecastday[2].date }</h5>
+                        <img alt=" icon " src={forecasts.forecast.forecastday[2].day.condition.icon}  />
                         <p>{forecasts.forecast.forecastday[2].day.condition.text}</p>
-                        <h3>{forecasts.forecast.forecastday[2].day.avgtemp_c} °C</h3>
+                        <h5>{forecasts.forecast.forecastday[2].day.avgtemp_c} °C</h5>
                     </div>
                 </div>
             </div>
-            <h5 className="tomorrow_hourly_forecast">Tomorrows Hourly Forecast from 6am to 6pm</h5>
-            <div className="hourlyForecast"
-            
-            > 
+            <h5 className="tomorrow_hourly_forecast">Tomorrow's Hourly Forecast from 6am to 6pm</h5>
+            <div className="hourlyForecast"> 
                 <ul className="forecast-hours">
-                    {/* { forecasts?.map((forecast, index) => {
-                        return(
-                            <li key = {index}>
-                                <p> { forecast.forecastday[0].hour[0].time } </p>
-                                <img src={ forecast.forecastday[0].hour[0].condition.icon } />
-                                <p>
-                                { forecast.forecastday[0].hour[0].temp_c }
-                                </p>
-
-                            </li>
-                            
-                        )
-                    })} */}
                     
-                    <li>3</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    <li>4</li>
-                    
+                    <li title= { forecasts.forecast.forecastday[1].hour[6].condition.text} >
+                        <small> { "06:00 AM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[6].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[6].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[7].condition.text} >
+                        <small> { "07:00 AM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[7].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[7].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[8].condition.text} >
+                        <small> { "08:00 AM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[8].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[8].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[9].condition.text} >
+                        <small> { "09:00 AM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[9].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[9].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[10].condition.text} >
+                        <small> { "10:00 AM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[10].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[10].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[11].condition.text} >
+                        <small> { "11:00 AM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[11].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[11].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[12].condition.text} >
+                        <small> { "12:00 PM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[12].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[12].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[13].condition.text} >
+                        <small> { "01:00 PM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[13].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[13].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[14].condition.text} >
+                        <small> { "02:00 PM"  } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[14].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[14].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[15].condition.text} >
+                        <small> { "03:00 PM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[15].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[15].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[16].condition.text} >
+                        <small> { "04:00 PM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[16].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[16].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[17].condition.text} >
+                        <small> { "05:00 PM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[17].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[17].temp_c } °C</small>
+                    </li>
+                    <li title= { forecasts.forecast.forecastday[1].hour[18].condition.text} >
+                        <small> { "06:00 PM" } </small>
+                        <img src={ forecasts.forecast.forecastday[1].hour[18].condition.icon } />
+                        <small> { forecasts.forecast.forecastday[1].hour[18].temp_c } °C</small>
+                    </li>
+               
+                      
                 </ul>
             </div>
     

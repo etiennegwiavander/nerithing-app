@@ -53,8 +53,8 @@
 .weather_content {
   
   border: 15px solid #000000d0;
-  max-width: 800px;
-  min-height: 400px;
+  width: 910px;
+  min-height: 200px;
   border-radius: 10px;
   margin: 10px auto;
   box-shadow: 0 50px 50px -30px #000000fa;
@@ -83,19 +83,28 @@
   margin-bottom: 0;
   min-height: 170px;
   color: black;
+  cursor: pointer;
   
   
 }
 .conditions-icon{
   text-align: center;
-  padding-left: 0;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 .conditions p {
-  margin-left: 12px;
+  margin-left: 20px;
   font-family: inherit;
   font-weight: 500;
   font-weight: bolder;
+  text-align: center;
   /* border-left: 3px solid black; */
+}
+
+.conditions p span{
+  display: block;
+  text-align: center;
+  padding-top: 10px;
 }
 .weather-loader, .weather-error {
   position: absolute;

@@ -1,7 +1,7 @@
 
 .weather_forecast_header{
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .current_weather_forecast{
     display: flex;
@@ -14,11 +14,19 @@
 .current_weather_forecast button{
     background: transparent;
     border: none;
+    cursor: pointer;
 }
+.current_weather_forecast button:hover{
+    
+    color: #1cffff;
+    transition: .2s ease-in;
+
+}
+
 .current_weather_forecast p, button{
-   color: wheat;
+   color: white;
     font-size: 50px;
-    padding: 0;
+    transition: .2s ease-out;
 
 }
 .forecast{
@@ -31,11 +39,16 @@
 .forecast_current{
     border-right: 1px solid black;
     text-align: center;
-    padding-right: 100px;
+    padding-right: 70px;
     text-align: center;
 }
 .forecast_current small{
     padding: 30px;
+    
+}
+
+.forecast_current small span{
+    font-weight: bold;
 }
 .forecast-nextTwoDays p {
     font-weight: bold;
@@ -55,6 +68,8 @@
     padding: 8px 12px;
     border-left: 1px solid black;
     list-style: none;
+    text-align: center;
+    cursor: pointer;
 }
 
 .forecast-day2, .forecast-day3{
@@ -64,7 +79,21 @@
     padding:0 10px 0 30px;
 
 }
+.forecast-nextTwoDays img{
+    width: 60px;
+}
 
 .tomorrow_hourly_forecast{
+    padding: 0 0  5px 0;
     text-align: center;
+}
+
+.forecast-hours li img{
+    width: 45px;
+    margin-top: 0;
+}
+
+.forecast-hours small{
+    font-size: 10px;
+    font-weight: bold;
 }
