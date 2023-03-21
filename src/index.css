@@ -53,8 +53,8 @@
 .weather_content {
   
   border: 15px solid #000000d0;
-  width: 910px;
-  min-height: 200px;
+  max-width: 910px;
+  /* min-height: 200px; */
   border-radius: 10px;
   margin: 10px auto;
   box-shadow: 0 50px 50px -30px #000000fa;
@@ -98,6 +98,7 @@
   font-weight: 500;
   font-weight: bolder;
   text-align: center;
+  font-size: 14px;
   /* border-left: 3px solid black; */
 }
 
@@ -116,7 +117,7 @@
 form.weather-input{
   margin: 70px auto 15px auto;
   text-align: center;
-  width: 800px;
+  width: 871px;
   background: white;
   border-radius: 20px;
   overflow: hidden;
@@ -124,24 +125,29 @@ form.weather-input{
 
 form.weather-input input{
   width: 800px;
-  padding: 6px;
+  padding: 5px;
   outline: none;
   border: none;
   font-family: inherit;
 }
 .weather-input button{
-  width: 88px;
-  padding: 6px 4px;
+  margin-top: 2px;
+  width: 60px;
+  padding: 4px 2px;
+  color: black;
   border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
   border: none;
   background-color: white;
   cursor: pointer;
+  background-color: #1cffff;
   transition: ease-out .1s;
 }
 .weather-input button:hover{
   background-color: #1cffff;
   font-weight: bold;
-  transition: ease-in .1s;
+  transition: ease-in .2s;
 }
 
 .weather-temperature{

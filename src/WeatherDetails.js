@@ -1,15 +1,17 @@
 import weathercss from './weather.module.css'
 import { API_key, BASE_URL } from "./api";
 import useFetch from "./useFetch";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import WeatherForcast from './WeatherForecast';
+import { FaSearch } from 'react-icons/fa';
 
 
 const WeatherDetails = () => {
 
-    const [city, setCity] = useState("Bamenda")
-    const [showForecast, setShowForecast] = useState(true);
+    const [city, setCity] = useState(" ")
+    const [showForecast, setShowForecast] = useState(true)
+    const inputRef = useRef()
 
     let URL = `${BASE_URL}/current.json?q=${city}`
 
@@ -19,9 +21,21 @@ const WeatherDetails = () => {
         }
     }
 
-    // to only alow the input update the state of the app when the user is done typing
-
     const {fetchedData, isLoading, error} = useFetch(URL, options)  
+    // to only alow the input update the state of the app when the user is done typing
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+
+        const value = inputRef.current.value
+        if ( value === " ") return
+        
+        setCity(prev => {
+            return [...prev, value]
+        })
+
+        inputRef.current.value = " "
+    }
+    
  
     
     const history = useHistory();
@@ -29,14 +43,13 @@ const WeatherDetails = () => {
     return ( 
         <div className={weathercss.weatherDetails} >
             
-            <form className='weather-input' >
-                <input type="text"  
+            <form className='weather-input' onSubmit={ handleSubmit } >
+                <input type="text" 
+                    placeholder='Type your city name' 
                     required
-                    value={ city }
-                    onChange = {(e)=> setCity(e.target.value)}
-                    placeholder='type city name'
-                    
+                    ref={inputRef} 
                 />
+                <button type='submit' ><FaSearch /></button>
             </form>
         
             { isLoading && <h1 className='weather-loader'> Loading ... </h1>}

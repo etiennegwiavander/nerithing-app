@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WeatherDetails from "./WeatherDetails";
 import WeatherForecast from "./WeatherForecast";
+import News from "./news/News";
 
 
 function App() {
@@ -18,8 +19,11 @@ function App() {
             <Route  path="/weather">
               <WeatherDetails/>
             </Route>
-            <Route exact path="/weather/weatherforecast">
+            <Route path="/weather/weatherforecast">
               <WeatherForecast/>
+            </Route>
+            <Route path="/news">
+              <News/>
             </Route>
           </Switch>
         </div>
