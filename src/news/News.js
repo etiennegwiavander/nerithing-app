@@ -1,8 +1,9 @@
 import "./news.css"
 import useFetchArray from "./useFetchArray"
-import { API_key } from "../api";
-import { useEffect, useRef, useState } from "react";
-import { NEWS_BASE_URL } from "../api";
+import { API_key, NEWS_BASE_URL } from "../api";
+import { useRef, useState } from "react";
+import  TrendingNews  from "./TrendingNews"
+
 
 const News = () => {
     const [search, setSearch] = useState(" ")
@@ -33,19 +34,19 @@ const News = () => {
     return ( 
         <div className="news">
 
-            <section>
-               <h1> DAILY NEWS</h1> 
-                <form  onSubmit={ handleSubmit }>
-                    <input type="text" placeholder=" Search for News Headlines" 
-                        required
-                        ref={inputRef}
-                        
-                    />
-             
-                    <input type="submit"/>
-                </form>
-
-            </section>
+            <h1> DAILY NEWS</h1> 
+            <form  onSubmit={ handleSubmit }>
+                <input type="text" placeholder=" Search for News Headlines" 
+                    required
+                    ref={inputRef}
+                />
+            
+                <input type="submit"/>
+            </form>
+            <div>
+                <TrendingNews/>
+            </div>
+           
             
 
         </div>

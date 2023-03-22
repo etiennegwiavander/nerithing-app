@@ -12,37 +12,37 @@ const useFetch = (url) => {
             'X-RapidAPI-Key':`${API_key}` ,
         }
     };
-    
+
     useEffect (()=>{
   
-        const getData = setTimeout(() => {
-            fetch(url, options)
-            .then(response => {
-                
-                if(!response.ok){
-                    throw Error("Could not fetch the data")
-                }
-                return response.json()})
-            .then(data => {
-                
-                setFetchedData(data)
-                setIsLoading(false)
-                setError(null)
-            })
-            .catch(err => {
-                if(err.name === "AbortError"){
-                
-                }else{
-                setError(err.message)
-                setIsLoading(false)
-                setFetchedData(null)  
-                setFetchedData(false)        
-                }
         
-            })
-        }, 1500)
+        fetch(url, options)
+        .then(response => {
+            
+            if(!response.ok){
+                throw Error("Could not fetch the data")
+            }
+            return response.json()})
+        .then(data => {
+            
+            setFetchedData(data)
+            setIsLoading(false)
+            setError(null)
+        })
+        .catch(err => {
+            if(err.name === "AbortError"){
+            
+            }else{
+            setError(err.message)
+            setIsLoading(false)
+            setFetchedData(null)  
+            setFetchedData(false)        
+            }
+    
+        })
+    
+    
         
-        return () => clearTimeout(getData)
     }, [url])
 
     return {fetchedData, isLoading, error}
