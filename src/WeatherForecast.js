@@ -25,7 +25,8 @@ const WeatherForecast = () => {
   
     const pageReload = () => window. location. reload( true )
     
-    console.log(forecasts)
+    console.log(forecasts.forecast)
+    const data = forecasts.forecast;
 
     return ( 
         <div className="weather_forecast" >
@@ -73,7 +74,15 @@ const WeatherForecast = () => {
             <h5 className="tomorrow_hourly_forecast">Tomorrow's Hourly Forecast from 6am to 6pm</h5>
             <div className="hourlyForecast"> 
                 <ul className="forecast-hours">
-                    
+                    {/* {data && Object.keys(data).map((key) =>
+                        <li title= { data.forecastday[key].hour[key].condition.text}>
+                            <small> { "06:00 AM" } </small>
+                            <img src={ data.forecastday[key].hour[ key].condition.icon } />
+                            <small> { data.forecastday[key].hour[ key].temp_c } °C</small>
+          
+                        </li>
+                    )} */}
+                   
                     <li title= { forecasts.forecast.forecastday[1].hour[6].condition.text} >
                         <small> { "06:00 AM" } </small>
                         <img src={ forecasts.forecast.forecastday[1].hour[6].condition.icon } />

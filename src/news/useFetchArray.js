@@ -7,16 +7,11 @@ const useFetch = (url) => {
     const [isLoading, setIsLoading]= useState(true)
     const [error, setError]= useState(null)
 
-    const options = {
-        headers: {
-            'X-RapidAPI-Key':`${API_key}` ,
-        }
-    };
+
 
     useEffect (()=>{
-  
         
-        fetch(url, options)
+        fetch(url)
         .then(response => {
             
             if(!response.ok){

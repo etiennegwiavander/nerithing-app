@@ -25,7 +25,7 @@ const WeatherDetails = () => {
     // to only alow the input update the state of the app when the user is done typing
     const handleSubmit = (e) =>{
         e.preventDefault()
-
+        
         const value = inputRef.current.value
         if ( value === " ") return
         
