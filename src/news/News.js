@@ -1,6 +1,6 @@
 import "./news.css"
 import useFetchArray from "./useFetchArray"
-import { API_key, NEWS_BASE_URL } from "../api";
+import { NEWS_API_key, NEWS_BASE_URL } from "../api";
 import { useRef, useState } from "react";
 import  TrendingNews  from "./TrendingNews"
 
@@ -8,15 +8,9 @@ import  TrendingNews  from "./TrendingNews"
 const News = () => {
     const [search, setSearch] = useState(" ")
     const inputRef = useRef()
-    let URL = `${NEWS_BASE_URL}/news/search?q=${search}&days=3`
-    const options = {
-        headers: {
-            'X-BingApis-SDK': 'true',
-            'X-RapidAPI-Key':`${API_key}` ,
-        }
-    }
+    let URL = `${ NEWS_BASE_URL}q=${search}&apiKey=${ NEWS_API_key }`
 
-    const {fetchedData:news, isLoading, error} = useFetchArray(URL, options) 
+    const {fetchedData:news, isLoading, error} = useFetchArray(URL) 
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -29,7 +23,6 @@ const News = () => {
         console.log(news)
     }
 
-    
 
     return ( 
         <div className="news">
