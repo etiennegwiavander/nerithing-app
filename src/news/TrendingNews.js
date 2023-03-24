@@ -11,7 +11,7 @@ const TrendingNews = () => {
     const {fetchedData:articles, isLoading, error} = useFetchArray(URL) 
     
     const data = articles.articles
-    
+
     console.log(articles)
     return ( 
         <div className="breaking_news">
@@ -26,7 +26,7 @@ const TrendingNews = () => {
                     </div>)}
                 </div>
             </div>
-        </div>
+        </div> 
      );
 }
  
