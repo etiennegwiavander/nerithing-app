@@ -22,7 +22,7 @@ const News = () => {
         inputRef.current.value = " "
         console.log(news)
     }
-
+   
 
     return ( 
         <div className="news">

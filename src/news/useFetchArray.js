@@ -1,5 +1,4 @@
 import { useEffect, useState  } from "react";
-import { API_key } from "../api";
 
 const useFetch = (url) => {
 

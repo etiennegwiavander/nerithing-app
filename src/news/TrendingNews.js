@@ -8,14 +8,15 @@ const TrendingNews = () => {
     let URL = `https://newsapi.org/v2/everything?q=manchester%20united&apiKey=aec5d48bf12b4d3f90ef893ffc64fb25`;
 
 
-    const {fetchedData:trends, isLoading, error} = useFetchArray(URL) 
+    const {fetchedData:articles, isLoading, error} = useFetchArray(URL) 
     
-    const data = trends.articles
-    console.log(data)
+    const data = articles.articles
+    
+    console.log(articles)
     return ( 
         <div className="breaking_news">
             <div>
-                <div>
+                <div >
                     {data && Object.keys(data).map((key) =>
                     <div >
                         <a href={data[key].url }>
@@ -29,4 +30,4 @@ const TrendingNews = () => {
      );
 }
  
-export default TrendingNews;
+export default TrendingNews; 
