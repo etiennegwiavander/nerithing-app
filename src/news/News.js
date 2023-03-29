@@ -8,7 +8,7 @@ import  TrendingNews  from "./TrendingNews"
 const News = () => {
     const [search, setSearch] = useState(" ")
     const inputRef = useRef()
-    let URL = `${ NEWS_BASE_URL}q=${search}&apiKey=${ NEWS_API_key }`
+    let URL = `${ NEWS_BASE_URL}top-headlines?q=${search}&apiKey=${ NEWS_API_key }`
 
     const {fetchedData:news, isLoading, error} = useFetchArray(URL) 
 
@@ -36,7 +36,7 @@ const News = () => {
             
                 <input type="submit"/>
             </form>
-            <div>
+            <div >
                 <TrendingNews/>
             </div>
            

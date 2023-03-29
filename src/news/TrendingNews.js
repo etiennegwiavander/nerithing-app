@@ -1,12 +1,12 @@
 import "./news.css"
 import useFetchArray from "./useFetchArray"
+import HorizontalScroll from "react-horizontal-scrolling";
 import { NEWS_API_key, NEWS_BASE_URL } from "../api";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const TrendingNews = () => {
-    let URL = `https://newsapi.org/v2/everything?q=manchester%20united&apiKey=aec5d48bf12b4d3f90ef893ffc64fb25`;
-
+    let URL = `${ NEWS_BASE_URL}Everything?q=technology&apiKey=${ NEWS_API_key }`;
 
     const {fetchedData:articles, isLoading, error} = useFetchArray(URL) 
     
@@ -15,17 +15,34 @@ const TrendingNews = () => {
     console.log(articles)
     return ( 
         <div className="breaking_news">
-            <div>
-                <div >
-                    {data && Object.keys(data).map((key) =>
-                    <div >
+            <fieldset>
+                <legend>
+                    <b>
+                        Breaking News
+                    </b>
+                </legend>
+                
+                    {data && Object.keys(data).map((key, index) =>
+                    <div className="headlines"  style={{  
+                            backgroundImage: `url(${data[key].urlToImage})`,
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            height: '152px',
+                            width: '254px'
+                        }}>
+                        <small style={{color:"red"}}> { data[key].source.name}</small>
                         <a href={data[key].url }>
-                            <img src={data[key].urlToImage} />
-                            <p style={{color: "white"}}> { data[key].description}</p>
+
+                            <p style={{color: "white"}}> { data[key].title}</p>
+                            
                         </a>
+                        
                     </div>)}
-                </div>
-            </div>
+               
+            </fieldset>
+                
+            
         </div> 
      );
 }

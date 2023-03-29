@@ -11,3 +11,90 @@
     margin: 70px ;
     text-align: center;
 }
+
+.breaking_news{
+    padding: 20px;
+}
+
+/* .breaking_news fieldset{
+    
+} */
+.headlines{
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    overflow: auto;
+    /* white-space: nowrap; */
+}
+
+.headlines a {
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .HorizontalScroll{
+    margin: 20px 40px;
+    width: 100vw;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.HorizontalScrollOuter {
+    height: 400px
+
+}
+.HorizontalScrolInner{
+    transform: translateX(2s);
+}*/
+.HorizontalScrollInnerChildren{
+    width:255x ;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.HorizontalScrollInnerChildren p{
+    /* text-align: center;
+    position: absolute; */
+    bottom: 0;
+}  
+
